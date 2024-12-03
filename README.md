@@ -1,45 +1,24 @@
-# Text_Summarization_NLP_Project
-A Comparitive study of LSTM, BiLSTM and Transformer Models for Text Summarization tasks.
+# Natural Language Processing: A Comparative study of LSTM, BiLSTM and Transformer Models for Text Summarization
 
-This repository contains codes for a LSTM, BiLSTM, Transfomer Model and a hybrid transformer model designed for text summarization using the BBC News Summary dataset to generate concise summaries from news articles.
-
-## Getting Started on Kaggle
-
-To run this code and reproduce the results, follow these steps to set up your Kaggle environment:
-
-1. Create a Kaggle account if you don't have one already.
-
-2. Your Identity needs to be verified for you to be able to access Kaggle's GPUs for foree for 30 hours / week.
-
-3. Go to the Kaggle Notebooks section and create a new notebook.
-
-4. Enable GPU acceleration:
-   - Click on the "..." menu in the top-right corner of your notebook.
-   - Select "Accelerator" and choose "GPU" from the dropdown menu.
-
-5. Add the BBC News Summary dataset:
-   - Click on the "+" icon in the "Data" section on the right sidebar.
-   - Search for "BBC News Summary" in the dataset browser.
-   - Click "Add" to include the dataset in your notebook.
-
-6. Import the code:
-   - You can either copy and paste the code directly into Kaggle notebook cells, or
-   - Upload the Python script files to your Kaggle notebook using the "Upload" button in the "Files" section.
-
-7. Run the code:
-   - Execute the cells in order to train and evaluate the model.
-
-## Repository Structure
-
-- `LSTM+GloVe.ipynb`: Implements an LSTM Model with GloVe embeddings for text summarization
-- `BiLSTM+GloVe.ipynb`: Implements a BiLSTM Model with GloVe embeddings for text summarization
-- `Transformer Model.ipynb`: Implements a Transformer Model embeddings and positional encodings for text summarization
-- `Hybrid Model - LSTM + BiLSTM + Transformer`: Implements a Hybrid model thattakes the LSTM and BiLSTM outputs as inputs to the Transformer Model for text summarization
-- `Dataset details.pdf`: Provides a link to the dataset as it is too large to upload.
-- `README.md`: This file, containing instructions for setup and usage.
+This repository contains code for a LSTM, BiLSTM, Transfomer Model and a hybrid LSTM-transformer model designed for text summarization using the BBC News Summary dataset to generate concise summaries from news articles.
 
 ## Dataset
 
 The BBC News Summary dataset is used for training and evaluation. It contains news articles and their corresponding summaries across various categories such as business, entertainment, politics, sport, and tech.
 
-Thank you!
+[BBC News Summary Dataset](http://mlg.ucd.ie/datasets/bbc.html)
+
+## Methods
+
+### LSTM Model with GloVe Embeddings
+The model leverages pre-trained GloVe embeddings to initialise word vectors, enhancing semantic representation. A unidirectional LSTM encoder captures sequential dependencies in the input text. An attention mechanism is employed to prioritise critical portions of the sequence, enabling more focused summarization. Finally, an LSTM decoder generates the output summary, ensuring coherence and relevance.
+
+### BiLSTM Model with GloVe Embeddings
+
+The model utilises pre-trained GloVe embeddings for word vector initialization, ensuring rich semantic representation. A bidirectional LSTM encoder captures contextual dependencies in both forward and backward directions, enhancing comprehension of word relationships. An attention mechanism is incorporated to prioritise key information in the sequence. The summarised text is generated using an LSTM decoder, ensuring coherence and relevance.
+
+### Transformer Model
+The model employs a learned embedding layer, optionally enhanced with positional encoding to represent sequence order. A custom-built Transformer encoder, utilising multi-head self-attention, captures global dependencies within the input text. The Transformer decoder, featuring masked self-attention, autoregressively generates coherent and contextually relevant summaries.
+
+### Hybrid Model Integration
+The approach explores integrating LSTM and BiLSTM outputs as inputs to a Transformer encoder to enhance sequential and contextual understanding. An ensemble method is applied, combining model outputs through logit averaging or summary blending to improve overall performance. Additionally, stacking LSTM and BiLSTM layers is proposed to capture both local and global context before feeding the Transformer, aiming to further refine the summarization process.
